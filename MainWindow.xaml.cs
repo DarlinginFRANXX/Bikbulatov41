@@ -27,8 +27,8 @@ namespace Bikbulatov41
             Manager.MainFrame = MainFrame;
             Loaded += delegate
             {
-                MinWidth = ActualWidth;
-                MinHeight = ActualHeight;
+                MinWidth = 1350;
+                MinHeight = 815;
             };
         }
 
