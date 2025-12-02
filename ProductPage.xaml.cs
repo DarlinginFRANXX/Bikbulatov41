@@ -20,16 +20,47 @@ namespace Bikbulatov41
     /// </summary>
     public partial class ProductPage : Page
     {
-        public ProductPage()
+        private void InitializePage(User user)
+        {
+            if (user != null)
+            {
+                UserNameTextBlock.Text = user.UserSurname + " " + user.UserName + " " + user.UserPatronymic;
+                switch (user.UserRole)
+                {
+                    case 1:
+                        UserRoleTextBlock.Text = "Клиент"; break;
+                    case 2:
+                        UserRoleTextBlock.Text = "Менеджер"; break;
+                    case 3:
+                        UserRoleTextBlock.Text = "Администратор"; break;
+                }
+                var currentProduct = Bikbulatov41Entities.GetContext().Product.ToList();
+                ProductListView.ItemsSource = currentProduct;
+
+                ComboType.SelectedIndex = 0;
+                UpdateProduct();
+            }
+            else
+            {
+                UserNameTextBlock.Text = "Гость";
+                UserRoleTextBlock.Text = "Нету";
+                var currentProduct = Bikbulatov41Entities.GetContext().Product.ToList();
+                ProductListView.ItemsSource = currentProduct;
+
+                ComboType.SelectedIndex = 0;
+                UpdateProduct();
+   
+            }
+        }
+        public ProductPage(User user)
         {
             InitializeComponent();
-
-            var currentProduct = Bikbulatov41Entities.GetContext().Product.ToList();
-            ProductListView.ItemsSource = currentProduct;
-
-            ComboType.SelectedIndex = 0;
-            UpdateProduct();
+            
+            
+            InitializePage(user);
         }
+   
+
         private void UpdateProduct()
         {
             var allProducts = Bikbulatov41Entities.GetContext().Product.ToList();
