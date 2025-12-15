@@ -25,7 +25,7 @@ namespace Bikbulatov41
 
         public AuthPage()
         {
-            try
+            try 
             {
                 InitializeComponent();
                 InitializeTimer();

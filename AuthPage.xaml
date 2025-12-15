@@ -9,7 +9,7 @@
       Title="AuthPage" FontFamily="Comic Sans MS">
 
     <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
-        <Grid.RowDefinitions>
+        <Grid.RowDefinitions> 
             <RowDefinition Height="80"/>
             <RowDefinition Height="80"/>
             <RowDefinition Height="80"/>
